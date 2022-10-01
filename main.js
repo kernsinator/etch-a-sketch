@@ -37,10 +37,6 @@ function drawGrid(lengthOfSide) {
 }
 
 
-function getRandomColor() {
-    let color = `rgb(${Math.floor(Math.random() * 255)},${Math.floor(Math.random() * 255)},${Math.floor(Math.random() * 255)})`
-    return color;
-}
 
 function paintCell(event) {
     if(event.target.classList.contains('.painted' ) && +event.target.getAttribute("data-brightness") > 0) {
@@ -51,6 +47,11 @@ function paintCell(event) {
     }
     event.target.style.backgroundColor = getRandomColor();
     event.target.classList.add('.painted');
+}
+
+function getRandomColor() {
+    let color = `rgb(${Math.floor(Math.random() * 255)},${Math.floor(Math.random() * 255)},${Math.floor(Math.random() * 255)})`
+    return color;
 }
 
 
