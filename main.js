@@ -28,15 +28,29 @@ function drawGrid(lengthOfSide) {
             div.classList.add('cell');
             div.style.width = `${800 / lengthOfSide}px`;
             div.style.height = `${800 / lengthOfSide}px`;
+            div.setAttribute("data-brightness", "1.0")
+            div.style.filter = `brightness(${+div.getAttribute("data-brightness")})`;
             div.addEventListener('mouseover', paintCell)
             container.appendChild(div);
         }
     }
 }
 
+
+function getRandomColor() {
+    let color = `rgb(${Math.floor(Math.random() * 255)},${Math.floor(Math.random() * 255)},${Math.floor(Math.random() * 255)})`
+    return color;
+}
+
 function paintCell(event) {
-    console.log(event);
-    event.target.classList.add('painted')
+    if(event.target.classList.contains('.painted' ) && +event.target.getAttribute("data-brightness") > 0) {
+        let newBrightness = +event.target.getAttribute("data-brightness") - 0.1
+        event.target.style.filter = `brightness(${newBrightness})`;
+        event.target.setAttribute("data-brightness", `${newBrightness}`)
+        return;
+    }
+    event.target.style.backgroundColor = getRandomColor();
+    event.target.classList.add('.painted');
 }
 
 
