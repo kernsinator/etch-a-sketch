@@ -11,11 +11,15 @@ body {
     height: 100vh;
 }
 
-div {
+div .cell {
     background-color: aliceblue;
     height: 6vh;
     width: 6vw;
     border: 1px solid black;
+}
+
+div.cell.painted {
+    background-color: black;
 }
 
 .container {
